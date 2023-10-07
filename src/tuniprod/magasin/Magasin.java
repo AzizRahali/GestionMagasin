@@ -23,7 +23,7 @@ public class Magasin {
 
 
     public Magasin() {
-        produits = new Produit[CAPACITE_MAX];
+        produits = new Produit[2];
         employes = new Employe[CAPACITE_MAX_EMPLOYE];
     }
 
@@ -99,15 +99,22 @@ public class Magasin {
         return false;
     }
 
-    public boolean addProduit(Produit produit) {
+    public void addProduit(Produit produit) throws PrixNegatifException, MagasinPleinException {
         if (nbProduits < CAPACITE_MAX && !this.produitExists(produit)) {
-            produits[nbProduits] = produit;
-            setNbProduits(this.nbProduits + 1);
-            Magasin.nbTotalProduits++;
-            return true;
+            if (produit.getPrix() >= 0) {
+                produits[nbProduits] = produit;
+                setNbProduits(this.nbProduits + 1);
+                Magasin.nbTotalProduits++;
+            } else {
+                throw new PrixNegatifException("Le prix du produit est négatif : " + produit.getPrix());
+            }
+        } else if (nbProduits >= CAPACITE_MAX) {
+            throw new MagasinPleinException("Le magasin est plein. Impossible d'ajouter plus de produits.");
         }
-        return false;
     }
+
+
+
 
     private int getProduitIndex(Produit produit) {
         for (int i = 0; i < nbProduits; i++) {

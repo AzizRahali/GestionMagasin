@@ -3,6 +3,7 @@ package tuniprod.employe;
 public class Caissier extends Employe {
 
     public Caissier() {
+
     }
 
     public Caissier(int id, String nom, String adresse) {

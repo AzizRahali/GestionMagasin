@@ -4,12 +4,14 @@ import tuniprod.employe.Caissier;
 import tuniprod.employe.Responsable;
 import tuniprod.employe.Vendeur;
 import tuniprod.magasin.Magasin;
+import tuniprod.magasin.MagasinPleinException;
+import tuniprod.magasin.PrixNegatifException;
 import tuniprod.produit.Produit;
 
 import java.time.LocalDate;
 
 public class Main {
-    public static void main(String[] args) {
+    public static void main(String[] args) throws MagasinPleinException, PrixNegatifException {
         Magasin carrefour = new Magasin(1, "Carrefour", "Centre Ville");
         Magasin monoPrix = new Magasin(2, "Mono Prix", "Manzah 6");
 
@@ -25,11 +27,11 @@ public class Main {
             carrefour.addEmploye(r1);
         }
 
-        c1 = new Caissier(5, "Melek", "Tunis");
-        v1 = new Vendeur(6, "Sarra", "Tunis");
-        Vendeur v2 = new Vendeur(7, "Sarra", "Tunis");
-        Vendeur v3 = new Vendeur(8, "Sarra", "Tunis");
-        r1 = new Responsable(9, "Sarra", "Tunis");
+        c1 = new Caissier(5, "Arij", "Tunis");
+        v1 = new Vendeur(6, "Aziz", "Tunis");
+        Vendeur v2 = new Vendeur(7, "Mohamed", "Tunis");
+        Vendeur v3 = new Vendeur(8, "Firas", "Tunis");
+        r1 = new Responsable(9, "Nadim", "Tunis");
 
         for (int i = 0; i < 5; i++) {
             monoPrix.addEmploye(c1);
